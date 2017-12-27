@@ -10,9 +10,26 @@ use JMS\SerializerBundle\JMSSerializerBundle;
 
 class EtudiantController extends Controller
 {
-    public function signupAction()
+    public function signupAction(Request $request)
     {
-        //code
+        $cne = $request->get('cne');
+        $motPasse = $request->get('motPasse');
+        $nom = $request->get('nom');
+        $prenom = $request->get('prenom');
+        $dateNaissance = $request->get('dateNaissance');
+        $niveau = $request->get('niveau');
+        $numInscription = $request->get('numInscription');
+
+        $donnees_valides = validation_signup($cne, $motPasse, $prenom, $dateNaissance, $niveau, $numInscription);
+
+        if($donnees_valides)
+        {
+            //code
+        }
+        else
+        {
+            //code
+        }
     }
 
     //Fonctionne tres bien
@@ -65,5 +82,14 @@ class EtudiantController extends Controller
     public function passwordForgottenAction()
     {
         //code
+    }
+
+    function validation_signup($cne, $motPasse, $prenom, $dateNaissance, $niveau, $numInscription)
+    {
+        $donnees_valides = false;
+        if($numInscription)//regex \d+
+        {
+            //code
+        }
     }
 }
