@@ -1,4 +1,3 @@
 ensah:
     resource: "@EnsahBundle/Resources/config/routing.yml"
     prefix:   /
-    type: annotation

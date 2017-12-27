@@ -1,0 +1,37 @@
+home_page:
+    path: /
+    defaults:
+        _controller: EnsahBundle:Default:index
+    methods: [GET]
+
+download_route:
+    path: /download/{table}/{id}
+    defaults:
+        _controller: EnsahBundle:Default:download
+    requirements:
+        id: '\d+'
+    methods: [POST]
+
+signup_route:
+    path: /signup
+    defaults:
+        _controller: EnsahBundle:Etudiant:signup
+    methods: [POST]
+
+login_route:
+    path: /login
+    defaults:
+        _controller: EnsahBundle:Etudiant:login
+    methods: [POST]
+
+password_forgotten_route:
+    path: /password-forgotten
+    defaults:
+            _controller: EnsahBundle:Etudiant:passwordForgotten
+    methods: [POST]
+
+actualite_route:
+    path: /actualite
+    defaults:
+            _controller: EnsahBundle:Actualite:actualite
+    methods: [POST]
