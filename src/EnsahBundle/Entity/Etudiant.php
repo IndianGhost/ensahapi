@@ -45,6 +45,13 @@ class Etudiant
     private $prenom;
 
     /**
+     * @var string
+     * @JMS\Serializer\Annotation\Type("string")
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @var \DateTime
      * @JMS\Serializer\Annotation\Type("DateTime")
      * @ORM\Column(name="date_naissance", type="datetime")
@@ -74,7 +81,7 @@ class Etudiant
 
     public function __construct(){}
 
-    public function __construct2($cne, $nom, $prenom, $dateNaissance, $niveau, $numInscription, $motPasse)
+    public function __construct2($cne, $nom, $prenom, $email, $dateNaissance, $niveau, $numInscription, $motPasse)
     {
         $this->cne = $cne;
         $this->dateNaissance = $dateNaissance;
@@ -83,6 +90,7 @@ class Etudiant
         $this->niveau = $niveau;
         $this->prenom = $prenom;
         $this->nom = $nom;
+        $this->email = $email;
     }
 
     //Ce constructeur doit etre utilise dans un bloc try{}catch(Exception $e){}
@@ -191,6 +199,28 @@ class Etudiant
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Etudiant
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
