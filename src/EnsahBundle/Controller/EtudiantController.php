@@ -14,6 +14,7 @@ class EtudiantController extends Controller
     {
         //request is equal to $_POST[], e.g : $_POST['cne'] equivalents $request->request->get('cne')
         //query is equal to $_GET[], e.g : $_GET['cne'] equivalents $request->query->get('cne')
+
         $cne = $request->request->get('cne');
         $motPasse = $request->request->get('motPasse');
         $nom = $request->request->get('nom');
@@ -23,13 +24,33 @@ class EtudiantController extends Controller
         $niveau = $request->request->get('niveau');
         $numInscription = $request->request->get('numInscription');
 
-        $donnees_valides = $this->validation_signup($email, $motPasse, $dateNaissance, $niveau, $numInscription);
+//        $cne = $_POST['cne'];
+//        $motPasse = $_POST['motPasse'];
+//        $nom = $_POST['nom'];
+//        $prenom = $_POST['prenom'];
+//        $email = $_POST['email'];
+//        //$dateNaissance = $_POST['dateNaissance'];
+//        $niveau = $_POST['niveau'];
+//        $numInscription = $_POST['numInscription'];
 
+
+//        $donnees_valides = $this->validation_signup($email, $motPasse, $dateNaissance, $niveau, $numInscription);
+        //On suppose que les donnees sont valides
+        $donnees_valides = true;
         if($donnees_valides)
         {
             //Convertion du type
             $numInscription = intval($numInscription);
-            $etudiant = new Etudiant($cne, $nom, $prenom, $email, $dateNaissance, $niveau, $numInscription, $motPasse);
+            $etudiant = new Etudiant();
+
+            $etudiant->setCne($cne);
+            $etudiant->setMotPasse($motPasse);
+            //$etudiant->setDateNaissance($dateNaissance);
+            $etudiant->setNom($nom);
+            $etudiant->setPrenom($prenom);
+            $etudiant->setEmail($email);
+            $etudiant->setNiveau($niveau);
+            $etudiant->setNumInscription($numInscription);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($etudiant);
@@ -97,52 +118,51 @@ class EtudiantController extends Controller
     /**
      *
      */
-    function validation_signup($email, $motPasse, $dateNaissance, $niveau, $numInscription)
-    {
-        $donnees_valides = false;
-        /*
-         * niveau appartient a l'ensemble suivant :
-         * {cp1, cp2, gi1, gi2, gi3, gc1, gc2, gc3, geer1, geer2, geer3, gee1, gee2, gee3}
-         *
-        */
-        $niveaux = [
-            'cp1', 'cp2',
-            'gi1', 'gi2', 'gi3',
-            'gc1', 'gc2', 'gc3',
-            'geer1', 'geer2', 'geer3',
-            'gee1', 'gee2', 'gee3'
-        ];
-        /*
-         * #[^0-9]# retourne true si la phrase contient autre chose que des chiffres
-         * numInscription est valide au cas contraire, c'est pour cela qu'on fait la negation
-        */
-        if(
-            preg_match('/^\d+$/', $numInscription)
-        &&  strlen($motPasse)>=6 && strlen($motPasse)<=16
-        )//Regex pour format de la date a ajouter ulterieurement !
-        {
-            foreach($niveaux as $value)//Ou bien for($i=0; $i<count($niveau); $i++)
-            {
-                if(strtoupper($niveau)==strtoupper($value))
-                {
-                    $donnees_valides = true;
-                    break;
-                }
-            }
-            if($donnees_valides && $this->isValidEmail($email)==1)
-            {
-                $donnees_valides = true;
-            }
-            else
-            {
-                $donnees_valides = false;
-            }
-        }
-        return $donnees_valides;
-    }
-
-    function isValidEmail($email) {
-        return filter_var($email, FILTER_VALIDATE_EMAIL)
-        && preg_match('/@.+\./', $email);
-    }
+//    function validation_signup($email, $motPasse, $dateNaissance, $niveau, $numInscription)
+//    {
+//        $donnees_valides = false;
+//        /*
+//         * niveau appartient a l'ensemble suivant :
+//         * {cp1, cp2, gi1, gi2, gi3, gc1, gc2, gc3, geer1, geer2, geer3, gee1, gee2, gee3}
+//         *
+//        */
+//        $niveaux = [
+//            'cp1', 'cp2',
+//            'gi1', 'gi2', 'gi3',
+//            'gc1', 'gc2', 'gc3',
+//            'geer1', 'geer2', 'geer3',
+//            'gee1', 'gee2', 'gee3'
+//        ];
+//        /*
+//         * #[^0-9]# retourne true si la phrase contient autre chose que des chiffres
+//         * numInscription est valide au cas contraire, c'est pour cela qu'on fait la negation
+//        */
+//        if(
+//            preg_match('/^\d+$/', $numInscription)
+//        )//Regex pour format de la date a ajouter ulterieurement !
+//        {
+//            foreach($niveaux as $value)//Ou bien for($i=0; $i<count($niveau); $i++)
+//            {
+//                if(strtoupper($niveau)==strtoupper($value))
+//                {
+//                    $donnees_valides = true;
+//                    break;
+//                }
+//            }
+//            if($donnees_valides && $this->isValidEmail($email)==1)
+//            {
+//                $donnees_valides = true;
+//            }
+//            else
+//            {
+//                $donnees_valides = false;
+//            }
+//        }
+//        return $donnees_valides;
+//    }
+//
+//    function isValidEmail($email) {
+//        return filter_var($email, FILTER_VALIDATE_EMAIL)
+//        && preg_match('/@.+\./', $email);
+//    }*/
 }
