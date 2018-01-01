@@ -14,6 +14,6 @@ class DefaultController extends Controller
 
     public function downloadAction($table, $id)
     {
-        return new Response("Download a khoya");
+        //return new Response("Download a khoya");
     }
 }
