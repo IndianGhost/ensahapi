@@ -34,7 +34,7 @@ actualite_route:
     path: /actualite
     defaults:
             _controller: EnsahBundle:Actualite:actualite
-    methods: [POST]
+    methods: [GET, POST]
 
 emploi-temps:
     path: /emploi-temps/{niveau}

@@ -6,13 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Kernel;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        //code
+        return $this->render('Main/index.html.twig');
     }
 
     public function downloadAction($table, $id)
@@ -32,17 +31,26 @@ class DefaultController extends Controller
                 }
                 elseif (strcmp(get_class($object), 'EnsahBundle\\Entity\\Actualite')==0)
                 {
-                    $msg = 'Il n\'y a aucun fichier a telecharger 1'.get_class($object);
-                    return new JsonResponse(
-                        array(
-                            'reponse'=>$msg
-                        ),
-                        Response::HTTP_EXPECTATION_FAILED
-                    );
+                    if($object->getFichierAttache())
+                    {
+                        $path = realpath(__DIR__ . '/../../../web/news/' . $object->getLien());
+                        $file = new File($path);
+                        return $this->file($file);
+                    }
+                    else
+                    {
+                        $msg = 'Il n\'y a aucun fichier attache a cette actualite !';
+                        return new JsonResponse(
+                            array(
+                                'reponse'=>$msg
+                            ),
+                            Response::HTTP_EXPECTATION_FAILED
+                        );
+                    }
                 }
                 else
                 {
-                    $msg = 'Il n\'y a aucun fichier a telecharger 2'.get_class($object);
+                    $msg = 'le fichier demande n\'existe pas !';
                     return new JsonResponse(
                         array(
                             'reponse'=>$msg
@@ -54,7 +62,7 @@ class DefaultController extends Controller
         }
         else
         {
-            $msg = 'Il n\'y a aucun fichier a telecharger else';
+            $msg = 'Il n\'y a aucun fichier a telecharger !';
             return new JsonResponse(
                 array(
                     'reponse'=>$msg
