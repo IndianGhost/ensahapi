@@ -1,0 +1,220 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>ENSAH | Site Officiel de l'ENSA d'Al-Hoceima</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../styles/layout.css" type="text/css">
+<script src="../scripts/jquery-1.8.2.min.js"></script>
+<script src="../scripts/jquery-defaultvalue.js"></script>
+<script src="../scripts/jquery-browsercheck.js"></script>
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="styles/ie.css" type="text/css">
+<script src="scripts/ie/html5shiv.min.js"></script>
+<![endif]-->
+
+
+
+</head>
+<body>
+
+
+
+<!-- ### Entete du site ### -->
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<div class="wrapper row1">
+		<header id="header" class="clear">
+			<div id="hgroup">
+				<h1>
+					<a href="http://ensah.ma"><img src="../images/logo.jpg" width="96" height="84"><span
+						class="Stylelog">ENSAH</span></a>
+				</h1>
+				<h3 class="logosstitre"><a href="http://ensah.ma">Site Officiel de l'ENSA d'Al-Hoceima</a></h3>
+			</div>
+			<div class="fl_right">
+        <form id="searchform" action="http://www.google.com/cse">
+					<fieldset>
+						<legend></legend>
+						<input type="hidden" name="cx" value="000996684662007214448:snj8osbs_lw" />
+                        <input type="hidden" name="ie" value="UTF-8" />
+    
+						<input  class="formsearch" type="text" value="Rechercher sur notre site&hellip;"  name="q" id="q"
+							onFocus="this.value=(this.value=='Rechercher sur notre site&hellip;')? '' : this.value ;">
+						<input type="submit"    id="sf_submit" name="sa"   value="Rechercher" style="height:31px">
+					</fieldset>
+				</form>
+				
+
+
+      <ul id="social">
+	  	
+        
+		<li><a href="https://portal.microsoftonline.com" target="_blank"><img src="http://ensah.ma/images/social/contact.png" alt=""></a></li>
+        <li><a href="https://twitter.com/ensaalhoceima" target="_blank"><img src="http://ensah.ma/images/social/2.png" alt=""></a></li>
+        <li><a href="https://www.facebook.com/ensaalhoceima" target="_blank"><img src="http://ensah.ma/images/social/3.png" alt=""></a></li>       
+		<li><a href="#"><img src="http://ensah.ma/images/social/1.png" alt=""></a></li>
+
+
+      </ul>
+    </div>
+  </header>
+  
+  </div>
+
+
+<!-- ### Menu du site ### -->
+
+<div style="font-family:Arial, Helvetica, sans-serif">
+  <div class="wrapper row2">
+  <nav id="topnav">
+    <ul class="clear">
+      <li class="first active"><a href="http://ensah.ma/pages/../index.php">Accueil</a><span></span></li>
+			
+		 <li><a href="#">ENSAH</a><span></span>
+			<ul>
+			
+			
+		<!--	  <li><a href="http://ensah.ma/pages/motdirecteur.php">Mot du Directeur</a></li>-->	
+			  <li><a href="http://ensah.ma/pages/presentation.php">Présentation</a></li>			 
+			  <li><a href="http://ensah.ma/pages/administration.php">Administration</a></li>
+			  <!-- <li><a href="http://ensah.ma/pages/infrastructur.php ">Infrastructures</a></li>		-->	  			  
+			  <li><a href="http://ensah.ma/pages/etudes.php">Les études</a></li>
+			  <li><a href="http://ensah.ma/pages/conditionsacces.php">Conditions d'accès</a></li>
+			<!--  <li><a href="#">Partenaires officiels</a></li>-->
+			  <li><a href="http://ensah.ma/pages/reglements.php">Réglements et textes juridiques</a></li>
+			</ul>
+	  </li>	 	
+						
+			<li><a href="http://ensah.ma/pages/corpsenseignant.php">Enseignants</a><span></span></li>
+
+			
+ 		
+		  	<li><a href="#">Formation Initiale </a><span></span>
+				<ul>
+				  <li><a href="http://ensah.ma/pages/cp.php">Cycle Préparatoire</a></li>
+				  <li><a href="http://ensah.ma/pages/gc.php">Génie Civil</a></li>
+				  <li><a href="http://ensah.ma/pages/gi.php">Génie Informatique</a></li>
+				   <li><a href="http://ensah.ma/pages/geer.php">Génie energitiques et Energies Renouvelables</a></li>
+				   <li><a href="http://ensah.ma/pages/gee.php">Génie de l’Eau et de l’Environnement</a ></li>
+				</ul>
+      </li>	 
+		 <li><a href="https://ensah.ma/fc" target="_blank" >Formation Continue </a><span></span></li>
+
+	  	 <li><a href="http://ensah.ma/recherche/">Recherche </a><span></span></li>
+  	    <li><a href="http://ensah.ma/etudiants/">Espace Etudiants</a><span></span> </li>	
+
+         <li><a href="#">Services en ligne </a><span></span>
+           <ul>
+             <li><a href="http://ensah.ma/apps/eservices" target="_blank">E-Services</a> </li>
+             <li><a href="http://ensah.ma/biblio/">Bibliothèque</a></li>
+             <li><a href="https://login.microsoftonline.com" target="_blank">Messagerie</a> </li>
+			 <li><a href="https://eressources.imist.ma/" target="_blank">e-ressources</a> </li>
+             <li><a href="http://ensah.ma/pages/fichiers.php" target="_blank">fichiers et formulaires</a></li>
+           </ul>
+         </li>
+    </ul>
+  </nav>
+</div>
+<div>
+
+
+
+
+<!-- content -->
+<div class="wrapper row3">
+  <div id="container" class="clear">
+    <!-- content body -->
+    <!-- ########################################################################################## -->
+    <!-- ########################################################################################## -->
+    <h1>Page en cours de construction </h1>
+ 
+    
+	
+  <section class="pbodystyle">
+    <p> 
+      <img src="img/travaux.png" alt=""/> </p> 
+
+      </section>
+	
+	
+	
+    <!-- ########################################################################################## -->
+    <!-- ########################################################################################## -->
+    <!-- / content body -->
+  </div>
+</div>
+
+
+
+
+
+<!-- ### Footer ### -->
+<div class="wrapper row4">
+  <div id="footer" class="clear">
+    <!-- Section One -->
+    <section class="one_quarter first">
+      <h2 class="title" >Contactez nous</h2>
+      <p>
+		Ecole Nationale des Sciences Appliquées
+		d'Al Hoceima BP <span style="font-family:Arial, Helvetica, sans-serif">03</span>, Ajdir Al-Hoceima<br> 	  
+	    Tel: <span style="font-family:Arial, Helvetica, sans-serif"> +212(0) 539 80 57 14</span><br>
+        Fax: <span style="font-family:Arial, Helvetica, sans-serif"> +212(0) 539 80 57 13</span><br>
+	  </p>
+    </section>
+    <!-- Section Two -->
+    <section class="one_quarter">
+      <h2 class="title">Liens utiles</h2>
+      <nav>
+        <ul>
+          <li class="first"><a href="http://www.ump.ma/" target="_blank">Site de l'université</a></li>
+          <li><a href="http://www.enssup.gov.ma/"  target="_blank">Enseignement supérieur</a></li>
+          <li><a href="http://www.enssup.gov.ma/sites/default/files/NOTES/2017/05/3604/Vacances_Universitaires_2017-2018.pdf" target="_blank">Tableau des vacances</a></li>
+          <li><a href="http://www.cnrst.ma/" target="_blank">CNRST</a></li>
+        </ul>
+      </nav>
+    </section>
+    <!-- Section Three -->
+    <section class="one_quarter">
+       <h2 class="title">Accès rapide</h2>
+      <nav>
+        <ul>
+          <li class="first"><a href="http://ensah.ma/pages/planacces.php">Plan d'accès</a></li>
+          <li><a href="http://ensah.ma/pages/etudes.php">Les études </a></li>
+          <li><a href="http://ensah.ma/biblio/">Bibliothèque</a></li>
+          <li><a href="http://ensah.ma/etudiants/">Espace étudiants</a></li>
+        </ul>
+      </nav>
+    </section>
+    <!-- Section Four -->
+    <section class="one_quarter">
+      <h2 class="title">ENSAH SUR FACEBOOK</h2>
+<div class="fb-like" data-href="https://www.facebook.com/ensaalhoceima" data-width="150" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </section>
+    <!-- / Section -->
+  </div>
+</div>
+<!-- Copyright -->
+<div class="wrapper">
+  <footer id="copyright" class="clear">
+    <p class="fl_left"><span style="font-family:Arial, Helvetica, sans-serif">Copyright &copy; 2014 - ENSA Al-Hoceima | Tous droits réservés</span></p>
+    <p class="fl_right"><em>Site crée par Tarik BOUDAA </em></p>
+  </footer>
+</div>
+<script>
+$(document).ready(function () {
+    $("#nl_name, #nl_email").defaultvalue("Nom", "Email");
+});
+</script>
+</body>
+</html>
