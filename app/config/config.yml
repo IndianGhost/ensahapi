@@ -29,6 +29,8 @@ framework:
     fragments: ~
     http_method_override: true
     assets: ~
+    templating:
+        engines: ['twig', 'php']
     php_errors:
         log: true
 
