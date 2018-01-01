@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return new Response("C'est un RESTFUL API développé par le binôme Abdellatif BAKAR et Achraf BELLAALI !");
+        return $this->render('EnsahBundle:default:index.html.twig');
     }
 
     public function downloadAction($table, $id)

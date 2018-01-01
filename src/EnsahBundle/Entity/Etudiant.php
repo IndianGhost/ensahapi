@@ -54,7 +54,7 @@ class Etudiant
     /**
      * @var \DateTime
      * @JMS\Serializer\Annotation\Type("DateTime")
-     * @ORM\Column(name="date_naissance", type="datetime")
+     * @ORM\Column(name="date_naissance", type="date")
      */
     private $dateNaissance;
 
@@ -78,46 +78,6 @@ class Etudiant
      * @ORM\Column(name="mot_passe", type="string", length=255)
      */
     private $motPasse;
-
-    public function __construct(){}
-
-    public function __construct2($cne, $nom, $prenom, $email, $dateNaissance, $niveau, $numInscription, $motPasse)
-    {
-        $this->cne = $cne;
-        $this->dateNaissance = $dateNaissance;
-        $this->numInscription = $numInscription;
-        $this->motPasse = $motPasse;
-        $this->niveau = $niveau;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
-        $this->email = $email;
-    }
-
-    //Ce constructeur doit etre utilise dans un bloc try{}catch(Exception $e){}
-    public function __construct3($etudiant)
-    {
-        /*
-         * Pour verifier que l'objet $etudiant est une instance de la classe Etudiant
-         * La fonction strcmp(string, string) retourne 0 si les deux chaines de caracteres sont identiques
-         * La fonction get_class(object) retourne le nom de la classe de l'objet en parametre ;)string !
-        */
-        if(strcmp(get_class($this), get_class($etudiant))==0)
-        {
-            $this->id = $etudiant->getId();
-            $this->cne = $etudiant->getCne();
-            $this->dateNaissance = $etudiant->getDateNaissance();
-            $this->numInscription = $etudiant->getNumInscription();
-            $this->motPasse = $etudiant->getMotPasse();
-            $this->niveau = $etudiant->getNiveau();
-            $this->prenom = $etudiant->getPrenom();
-            $this->nom = $etudiant->getNom();
-        }
-        else
-        {
-            throw new Exception("Une erreur est survenue au niveau du constructeur par objet de la classe Etudiant");
-        }
-    }
-
 
     /**
      * Get id
@@ -318,46 +278,4 @@ class Etudiant
     {
         return $this->motPasse;
     }
-
-    public function validerAnnee()
-    {
-        $this->niveau++;
-    }
-
-    public function confirmerMotPasse($motPasseSaisi)
-    {
-        if(strcmp($this->motPasse, $motPasseSaisi)==0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function confirmerCne($cne)
-    {
-        if(strcmp($this->cne, $cne)==0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function authentification($cne, $motPass)
-    {
-        if($this->confirmerCne($cne) && $this->confirmerMotPasse($motPass))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
-
