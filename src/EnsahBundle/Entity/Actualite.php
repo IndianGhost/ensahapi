@@ -22,11 +22,18 @@ class Actualite
     private $id;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(name="fichier_attache", type="string", length=255)
+     * @ORM\Column(name="fichier_attache", type="boolean", options={"default":false})
      */
     private $fichierAttache;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lien", type="string", length=255)
+     */
+    private $lien;
 
     /**
      * @var string
@@ -41,44 +48,6 @@ class Actualite
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
-
-    public function __construct(){}
-
-    public function __construct1($fichier_attache, $titre, $contenu)
-    {
-        $this->setFichierAttache($fichier_attache);
-        $this->setTitre($titre);
-        $this->setContenu($contenu);
-    }
-
-    //Ce constructeur doit etre utilise dans un bloc try{}catch(Exception $e){}
-    public function __construct2($actualite)
-    {
-        /*
-         * Pour verifier que l'objet $actualite est une instance de la classe Actualite
-         * La fonction strcmp(string, string) retourne 0 si les deux chaines de caracteres sont identiques
-         * La fonction get_class(object) retourne le nom de la classe de l'objet en parametre ;)string !
-        */
-        if (strcmp(get_class($this), get_class($actualite)) == 0) {
-            $this->id = $actualite->getId();
-
-            $this->setContenu(
-                $actualite->getContenu()
-            );
-
-            $this->setTitre(
-                $actualite->getTitre()
-            );
-
-            $this->setFichierAttache(
-                $actualite->getFichierAttache()
-            );
-        }
-        else
-        {
-            throw new Exception("Une erreur est survenue au niveau du constructeur par objet de la classe Actualite");
-        }
-    }
 
     /**
      * Get id

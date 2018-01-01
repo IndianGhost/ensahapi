@@ -10,7 +10,7 @@ download_route:
         _controller: EnsahBundle:Default:download
     requirements:
         id: '\d+'
-    methods: [POST]
+    methods: [GET, POST]
 
 signup_route:
     path: /signup
@@ -35,3 +35,9 @@ actualite_route:
     defaults:
             _controller: EnsahBundle:Actualite:actualite
     methods: [POST]
+
+emploi-temps:
+    path: /emploi-temps/{niveau}
+    defaults:
+        _controller: EnsahBundle:Emploi:emploiTemps
+    methods: [GET, POST]

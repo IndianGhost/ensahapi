@@ -28,34 +28,13 @@ class EmploiTemps
      */
     private $lien;
 
-    public function __construct(){}
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
+     */
+    private $niveau;
 
-    public function __construct1($lien)
-    {
-        $this->setLien($lien);
-    }
-
-    //Ce constructeur doit etre utilise dans un bloc try{}catch(Exception $e){}
-    public function __construct2($emploiTemps)
-    {
-        /*
-         * Pour verifier que l'objet $actualite est une instance de la classe EmploiTemps
-         * La fonction strcmp(string, string) retourne 0 si les deux chaines de caracteres sont identiques
-         * La fonction get_class(object) retourne le nom de la classe de l'objet en parametre ;)string !
-        */
-        if (strcmp(get_class($this), get_class($emploiTemps)) == 0)
-        {
-            $this->id = $emploiTemps->getId();
-
-            $this->setLien(
-                $emploiTemps->getLien()
-            );
-        }
-        else
-        {
-            throw new Exception("Une erreur est survenue au niveau du constructeur par objet de la classe EmploiTemps");
-        }
-    }
 
     /**
      * Get id
@@ -89,6 +68,30 @@ class EmploiTemps
     public function getLien()
     {
         return $this->lien;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return EmploiTemps
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }
 

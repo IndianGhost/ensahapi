@@ -3,16 +3,34 @@
 namespace EnsahBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class EmploiController extends Controller
 {
-    /**
-     * @Route("/emplois-temps", name="emplois_temps_route")
-     */
-    public function emploisTempsAction()
+    public function emploiTempsAction($niveau)
     {
-        //code
+        $em = $this->getDoctrine()->getRepository('EnsahBundle:EmploiTemps');
+        $emploi = $em->findOneByNiveau($niveau);
+        if($emploi != null)
+        {
+            return $this->redirectToRoute("download_route",
+                array(
+                    "table" => "EmploiTemps",
+                    "id" => $emploi->getId()
+                )
+            );
+        }
+        else
+        {
+            $msg = 'Il n\y a aucun niveau intitule '.$niveau;
+            return new JsonResponse(
+                array(
+                    'reponse'=>$msg
+                ),
+                Response::HTTP_EXPECTATION_FAILED
+            );
+        }
     }
 
 }
