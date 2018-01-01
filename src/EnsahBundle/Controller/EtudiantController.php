@@ -11,7 +11,7 @@ use JMS\SerializerBundle\JMSSerializerBundle;
 
 class EtudiantController extends Controller
 {
-    //Fonctionne. Mais, avec des probleme au type date a resoudre ulterieurement !
+    //Fonctionne tres bien
     public function signupAction(Request $request)
     {
         $cne = $request->request->get('cne');
@@ -23,9 +23,14 @@ class EtudiantController extends Controller
         $niveau = $request->request->get('niveau');
         $numInscription = $request->request->get('numInscription');
 
-        //Conversion necessaire
+        /*
+         * Conversion necessaires
+         */
+        //from string to int
         $numInscription = intval($numInscription);
-        $dateNaissance = strtotime($dateNaissance);
+        //from string to date
+        $time = $dateNaissance;
+        $dateNaissance = date_create($time);
 
         //creation d'un objet Etudiant
         $etudiant = new Etudiant();
@@ -35,11 +40,11 @@ class EtudiantController extends Controller
         $etudiant->setNom($nom);
         $etudiant->setPrenom($prenom);
         $etudiant->setEmail($email);
-//        $etudiant->setDateNaissance($dateNaissance);
+        $etudiant->setDateNaissance($dateNaissance);
         $etudiant->setNiveau($niveau);
         $etudiant->setNumInscription($numInscription);
 
-        //Injetion de l'objet dans la base de donnees
+        //Injection de l'objet dans la base de donnees
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('EnsahBundle:Etudiant');
         $em->persist($etudiant);
@@ -128,10 +133,92 @@ class EtudiantController extends Controller
         return $response;
     }
 
-    //Developpement de ce cas d'utilisation sera le dernier travail a faire !
-    public function passwordForgottenAction()
+    //Fonction tres bien !
+    public function passwordForgottenAction(Request $request)
     {
-        //code
+        //Recuperation des parametres de la methode post
+        $cne = $request->request->get('cne');
+        $email = $request->request->get('email');
+
+        //Creation d'un objet Etudiant
+        $etudiant = new Etudiant();
+        $etudiant->setCne($cne);
+        $etudiant->setEmail($email);
+
+        //Verification de l'existance du CNE a la base de donnees
+        if($etudiant != null)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $etd_db = $em->getRepository('EnsahBundle:Etudiant')->findOneByCne($etudiant->getCne());
+        }
+        if(strcmp(get_class($etudiant), get_class($etd_db)) == 0)
+        {
+            if(strcmp($etd_db->getCne(), $etudiant->getCne()) == 0)
+            {
+                if(strcmp($etd_db->getEmail(), $etudiant->getEmail()) == 0)
+                {
+                    //Envoi de l'email
+                    $to      = $etd_db->getEmail();
+                    $subject = 'Récupération du mot de passe !';
+                    $message = $this->renderView(
+                            // app/Resources/views/Emails/forgottenPassword.html.twig
+                                'Emails/forgottenPassword.html.twig',
+                                array(
+                                    'etudiant' => $etd_db
+                                )
+                        );
+                    $headers = 'From: achraf.bellaali@gmail.com' . '\r\n' .
+                        'Reply-To: achraf.bellaali@gmail.com' . '\r\n'.
+                        'X-Mailer: PHP/' . phpversion().'\r\n'.
+                        'Content-Type: text/html; charset=UTF-8'.'\r\n';
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+                    $succes = mail($to, $subject, $message, $headers);
+                    if($succes)
+                    {
+                        $msg = 'Un courriel electronique a ete envoye a votre adresse electronique !';
+                        $response = new JsonResponse(
+                            array(
+                                'response' => $msg
+                            ),
+                            Response::HTTP_ACCEPTED
+                        );
+                    }
+                    else
+                    {
+                        $msg = 'Donnees correcte. Mais, l\'email n\'a pas pu etre envoye. Veuillez reessayer ulterieurement  !';
+                        $response = new JsonResponse(
+                            array(
+                                'response' => $msg
+                            ),
+                            Response::HTTP_ACCEPTED
+                        );
+                    }
+                }
+                else
+                {
+                    $msg = 'cette adresse electronique ne correspond pas au CNE !';
+                    $response = new JsonResponse(
+                        array(
+                            'response' => $msg
+                        ),
+                        Response::HTTP_EXPECTATION_FAILED
+                    );
+                }
+            }
+        }
+        else
+        {
+            $msg = 'Aucun compte n a ete cree avec ce CNE, veuillez creer un nouveau compte !';
+            $response = new JsonResponse(
+                array(
+                    'response' => $msg
+                ),
+                Response::HTTP_EXPECTATION_FAILED
+            );
+        }
+        return $response;
     }
 
     /*
