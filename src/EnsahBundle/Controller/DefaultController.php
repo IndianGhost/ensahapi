@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('EnsahBundle:default:index.html.twig');
+        //code
     }
 
     public function downloadAction($table, $id)
