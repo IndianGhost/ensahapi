@@ -1,18 +1,13 @@
-Symfony Standard Edition
+ENSAH API built using Symfony Standard Edition
 ========================
-
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
 What's inside?
 --------------
 
-The Symfony Standard Edition is configured with the following defaults:
+The ENSAH API is configured with the following defaults:
+  
+  * A Documentation webpage in the route / that helps you to understand the differents use cases of the project;
 
-  * An AppBundle you can use to start coding;
+  * An EnsahBundle you can use to start coding;
 
   * Twig as the only configured template engine;
 
@@ -56,17 +51,5 @@ It comes pre-configured with the following bundles:
   * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
     integration
 
-All libraries and bundles included in the Symfony Standard Edition are
+ENSAH API & All libraries and bundles included in the Symfony Standard Edition are
 released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
