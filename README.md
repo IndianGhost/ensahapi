@@ -6,8 +6,8 @@ What's inside?
 The ENSAH API is configured with the following defaults:
   
   * A Documentation webpage in the route / that helps you to understand the differents use cases of the project;
-
-  * An EnsahBundle you can use to start coding;
+  
+  * An EnsahBundle you can use to start coding;
 
   * Twig as the only configured template engine;
 
